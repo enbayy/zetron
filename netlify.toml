@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
-  # Publish directory is handled automatically by the Next.js plugin
-  # Do not set publish directory in Netlify UI - leave it empty
+  publish = ".netlify"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
