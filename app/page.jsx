@@ -28,14 +28,6 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "Metal Kalıp",
-      description: "Profesyonel metal kalıp tasarım ve üretim hizmetleri ile projelerinize değer katıyoruz.",
-      imageUrl: null, // "/images/slider/metal-kalip.jpg" - resim eklemek için buraya path yazın
-      fallbackGradient: "bg-gradient-to-br from-red-500 to-red-700",
-      link: "/urunler/metal-kalip",
-    },
-    {
-      id: 4,
       title: "Alüminyum Döküm",
       description: "Modern teknoloji ile yüksek kaliteli alüminyum döküm hizmetleri.",
       imageUrl: null, // "/images/slider/aluminyum-dokum.jpg" - resim eklemek için buraya path yazın
@@ -67,8 +59,6 @@ export default function Home() {
     { id: "hidrolik", name: "Hidrolik", color: "from-red-500 to-red-700" },
     { id: "pnomatik", name: "Pnömatik", color: "from-red-600 to-red-800" },
     { id: "degirmen", name: "Değirmen", color: "from-red-400 to-red-600" },
-    { id: "metal-kalip", name: "Metal Kalıp", color: "from-red-700 to-red-900" },
-    { id: "enjeksiyon-dokum", name: "Enjeksiyon Döküm", color: "from-red-500 to-red-800" },
   ];
 
   // Slug oluşturma fonksiyonu
@@ -145,50 +135,6 @@ export default function Home() {
         slug: "filtre-kapagi",
       },
     ],
-    "metal-kalip": [
-      {
-        name: "Metal Kalıp Tasarımı",
-        description: "Profesyonel metal kalıp tasarım hizmetleri",
-        slug: "metal-kalip-tasarimi",
-      },
-      {
-        name: "Kalıp Üretimi",
-        description: "Yüksek kaliteli metal kalıp üretimi",
-        slug: "kalip-uretimi",
-      },
-      {
-        name: "Kalıp Bakım ve Onarım",
-        description: "Uzman ekibimizle kalıp bakım ve onarım hizmetleri",
-        slug: "kalip-bakim-ve-onarim",
-      },
-      {
-        name: "Teknik Danışmanlık",
-        description: "Metal kalıp konusunda teknik danışmanlık hizmetleri",
-        slug: "teknik-danismanlik",
-      },
-    ],
-    "enjeksiyon-dokum": [
-      {
-        name: "Modern Enjeksiyon Makineleri",
-        description: "Yüksek teknoloji enjeksiyon döküm makineleri",
-        slug: "modern-enjeksiyon-makineleri",
-      },
-      {
-        name: "Hassas Üretim",
-        description: "Hassas ve kaliteli enjeksiyon döküm üretimi",
-        slug: "hassas-uretim",
-      },
-      {
-        name: "Kalite Kontrol",
-        description: "Kapsamlı kalite kontrol sistemleri",
-        slug: "kalite-kontrol",
-      },
-      {
-        name: "Esnek Üretim",
-        description: "Geniş ürün yelpazesi için esnek üretim çözümleri",
-        slug: "esnek-uretim",
-      },
-    ],
   };
   const services = [
     {
@@ -255,27 +201,6 @@ export default function Home() {
       href: "/urunler/degirmen",
     },
     {
-      title: "Metal Kalıp",
-      description:
-        "Yüksek kaliteli metal kalıp üretimi ve tasarım hizmetleri.",
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
-      href: "/urunler/metal-kalip",
-    },
-    {
       title: "Alüminyum Döküm",
       description:
         "Profesyonel alüminyum döküm hizmetleri ve üretim çözümleri.",
@@ -295,27 +220,6 @@ export default function Home() {
         </svg>
       ),
       href: "/urunler",
-    },
-    {
-      title: "Enjeksiyon Döküm",
-      description:
-        "Modern enjeksiyon döküm teknolojileri ile kaliteli üretim.",
-      icon: (
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-      href: "/urunler/enjeksiyon-dokum",
     },
   ];
 

@@ -4,6 +4,19 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function AluminyumYagDeposu() {
+  const yagDeposuSeries = [
+    {
+      name: "1 LT Yağ Deposu",
+      category: "Alüminyum Yağ Deposu",
+      slug: "1-lt-yag-deposu",
+    },
+    {
+      name: "2, 3, 4, 5 LT Yağ Deposu ve Gövdesi",
+      category: "Alüminyum Yağ Deposu",
+      slug: "2-3-4-5-lt-yag-deposu-ve-govdesi",
+    },
+  ];
+
   const relatedProducts = [
     {
       name: "Kampanalar",
@@ -54,6 +67,59 @@ export default function AluminyumYagDeposu() {
               </Link>
             </motion.div>
           </motion.div>
+
+          {/* Alüminyum Yağ Deposu Series Cards */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-8 text-gray-800">
+              Alüminyum Yağ Deposu Serileri
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {yagDeposuSeries.map((depo, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group overflow-hidden border border-gray-100"
+                >
+                  <Link href={`/urunler/hidrolik/aluminyum-yag-deposu/${depo.slug}`}>
+                    <div className="relative h-48 bg-gradient-to-br from-red-500 to-red-700 overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <svg
+                          className="w-20 h-20 text-white opacity-90"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors mb-2">
+                        {depo.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {depo.category}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           <div>
             <h2 className="text-3xl font-bold mb-8 text-gray-800">
