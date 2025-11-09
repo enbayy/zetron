@@ -1,0 +1,167 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+export default function Kampanalar() {
+  const kampanaSeries = [
+    {
+      name: "0K, 1K, 2K Kampana Serisi",
+      category: "Kampanalar",
+      slug: "0k-1k-2k-kampana-serisi",
+    },
+    {
+      name: "Kavi Kare Kampana Serisi",
+      category: "Kampanalar",
+      slug: "kavi-kare-kampana-serisi",
+    },
+    {
+      name: "3K Kampana Serisi",
+      category: "Kampanalar",
+      slug: "3k-kampana-serisi",
+    },
+    {
+      name: "Yuvarlak Kampana Serisi",
+      category: "Kampanalar",
+      slug: "yuvarlak-kampana-serisi",
+    },
+  ];
+
+  const relatedProducts = [
+    {
+      name: "DK Kaplin Serisi",
+      description: "Güvenilir ve dayanıklı kaplin çözümleri",
+      href: "/urunler/hidrolik/dk-kaplin-serisi",
+    },
+    {
+      name: "Alüminyum Yağ Deposu",
+      description: "Hafif ve dayanıklı alüminyum yağ depolama sistemleri",
+      href: "/urunler/hidrolik/aluminyum-yag-deposu",
+    },
+    {
+      name: "Bakım Kapağı ve Flanş",
+      description: "Kolay bakım ve erişim için özel tasarım kapaklar",
+      href: "/urunler/hidrolik/bakim-kapagi-ve-flans",
+    },
+  ];
+
+  return (
+    <div className="py-20 bg-gray-50 min-h-screen">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">
+              Teknik Bilgi ve Fiyatlandırma
+            </h2>
+            <p className="text-lg mb-6 text-red-100">
+              Kampanalar hakkında detaylı teknik bilgi ve fiyatlandırma için lütfen
+              bizimle iletişime geçin.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/iletisim"
+                className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"
+              >
+                İletişime Geçin
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Kampana Series Cards */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-8 text-gray-800">
+              Kampana Serileri
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {kampanaSeries.map((kampana, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group overflow-hidden border border-gray-100"
+                >
+                  <Link href={`/urunler/hidrolik/kampanalar/${kampana.slug}`}>
+                    <div className="relative h-48 bg-gradient-to-br from-red-500 to-red-700 overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <svg
+                          className="w-20 h-20 text-white opacity-90"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors mb-2">
+                        {kampana.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {kampana.category}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-gray-800">
+              Diğer Hidrolik Ürünlerimiz
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedProducts.map((product, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <Link href={product.href}>
+                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all border-l-4 border-red-600 h-full">
+                      <h3 className="text-xl font-semibold mb-3 text-gray-800 hover:text-red-600 transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {product.description}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
