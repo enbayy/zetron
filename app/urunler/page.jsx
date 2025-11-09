@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function Urunler() {
   const categories = [
@@ -109,8 +108,7 @@ export default function Urunler() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
+  ,
     visible: {
       opacity: 1,
       transition: {
@@ -119,8 +117,7 @@ export default function Urunler() {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  ,
     visible: {
       opacity: 1,
       y: 0,
@@ -133,10 +130,7 @@ export default function Urunler() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div}}}
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-800">
@@ -146,28 +140,23 @@ export default function Urunler() {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Geniş ürün yelpazemiz ile ihtiyaçlarınıza uygun çözümler sunuyoruz
           </p>
-        </motion.div>
-        <motion.div
-          variants={containerVariants}
+        </div>
+        <div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          whileInView="visible"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {categories.map((category, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <div key={index}>
               <Link href={category.href}>
-                <motion.div
-                  whileHover={{ y: -10, scale: 1.02 }}
+                <div}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all cursor-pointer group h-full"
                 >
-                  <motion.div
-                    className="text-red-600 mb-6 group-hover:text-red-700 transition-colors"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
+                  <div
+                    className="text-red-600 mb-6 group-hover:text-red-700 transition-colors"}}
                   >
                     {category.icon}
-                  </motion.div>
+                  </div>
                   <h2 className="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-red-600 transition-colors">
                     {category.title}
                   </h2>
@@ -177,14 +166,13 @@ export default function Urunler() {
                   <div className="mt-6 text-red-600 font-semibold group-hover:translate-x-2 transition-transform">
                     Detayları Gör →
                   </div>
-                </motion.div>
+                </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
 }
-
 

@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Belgeler() {
   const certificates = [
     {
@@ -29,23 +27,17 @@ export default function Belgeler() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div}}}
           className="max-w-4xl mx-auto mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">
             Belgelerimiz
           </h1>
           <div className="w-24 h-1 bg-red-600 mb-8"></div>
-        </motion.div>
+        </div>
 
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div}}}
             className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12"
           >
             <div className="prose prose-lg max-w-none">
@@ -54,17 +46,12 @@ export default function Belgeler() {
                 belgeleyen çeşitli sertifikalar ve belgelerimiz bulunmaktadır.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {certificates.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
+              <div
+                key={index}}}}}}
                 className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all hover:border-red-600"
               >
                 <div className="text-5xl mb-4">{cert.icon}</div>
@@ -74,15 +61,11 @@ export default function Belgeler() {
                 <p className="text-gray-600 leading-relaxed">
                   {cert.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div}}}}
             className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-4">Belgeler Hakkında</h2>
@@ -102,11 +85,10 @@ export default function Belgeler() {
                 <span className="font-semibold">TSE Belgesi</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 

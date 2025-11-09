@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Hakkimizda() {
@@ -31,49 +30,18 @@ export default function Hakkimizda() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto mb-16"
-        >
+        <div className="max-w-4xl mx-auto mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">
             Hakkımızda
           </h1>
           <div className="w-24 h-1 bg-red-600 mb-8"></div>
-        </motion.div>
+        </div>
 
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12"
-          >
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12">
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6 text-lg">
                 Zetron Döküm, Hidrolik-Pnömatik, Değirmen Yedek Parçaları,
@@ -92,20 +60,12 @@ export default function Hakkimizda() {
                 doğrultusunda, sektörde öncü bir konumda yer almaktayız.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.02 }}
                 className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all"
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
@@ -115,17 +75,11 @@ export default function Hakkimizda() {
                 <p className="text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
-          >
+          <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white">
             <h2 className="text-3xl font-bold mb-6">Neden Zetron?</h2>
             <ul className="space-y-4 text-lg">
               <li className="flex items-start">
@@ -153,23 +107,17 @@ export default function Hakkimizda() {
                 </span>
               </li>
             </ul>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <Link
                 href="/iletisim"
                 className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"
               >
                 Bizimle İletişime Geçin
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-

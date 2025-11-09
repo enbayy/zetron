@@ -467,10 +467,10 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     whileHover={{ y: -8, scale: 1.02 }}
-                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group overflow-hidden border border-gray-100"
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group overflow-hidden border border-gray-100 h-full flex flex-col"
                   >
                     <div
-                      className={`relative h-48 bg-gradient-to-br ${categories.find((c) => c.id === activeCategory)?.color} overflow-hidden`}
+                      className={`relative h-48 bg-gradient-to-br ${categories.find((c) => c.id === activeCategory)?.color} overflow-hidden flex-shrink-0`}
                     >
                       <motion.div
                         className="absolute inset-0 flex items-center justify-center"
@@ -493,11 +493,11 @@ export default function Home() {
                       </motion.div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
-                    <div className="p-6">
+                    <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors mb-2">
                         {product.name}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed flex-1">
                         {product.description}
                       </p>
                     </div>
@@ -555,11 +555,11 @@ export default function Home() {
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group h-full flex flex-col"
               >
-                <Link href={service.href} className="block">
+                <Link href={service.href} className="block flex-1 flex flex-col">
                   <motion.div
-                    className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all"
+                    className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all flex-shrink-0"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -568,7 +568,7 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-red-600 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-1">
                     {service.description}
                   </p>
                 </Link>

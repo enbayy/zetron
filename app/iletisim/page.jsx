@@ -320,11 +320,11 @@ export default function Iletisim() {
                 <div className="space-y-3 text-gray-700">
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                     <span className="font-medium">Pazartesi - Cuma:</span>
-                    <span className="text-red-600 font-semibold">08:00 - 18:00</span>
+                    <span className="text-red-600 font-semibold">08:00 - 18:30</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                     <span className="font-medium">Cumartesi:</span>
-                    <span className="text-red-600 font-semibold">08:00 - 14:00</span>
+                    <span className="text-gray-500">Kapalı</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-white rounded-lg">
                     <span className="font-medium">Pazar:</span>

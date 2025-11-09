@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Misyon() {
   const missionValues = [
     {
@@ -33,23 +31,17 @@ export default function Misyon() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div}}}
           className="max-w-4xl mx-auto mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">
             Misyonumuz
           </h1>
           <div className="w-24 h-1 bg-red-600 mb-8"></div>
-        </motion.div>
+        </div>
 
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div}}}
             className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12"
           >
             <div className="prose prose-lg max-w-none">
@@ -64,13 +56,9 @@ export default function Misyon() {
                 ortaklıkları kurmaktır.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div}}}}
             className="mb-12"
           >
             <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
@@ -78,13 +66,8 @@ export default function Misyon() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {missionValues.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
+                <div
+                  key={index}}}}}}
                   className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all border-t-4 border-red-600"
                 >
                   <div className="text-3xl mb-3">✓</div>
@@ -94,16 +77,12 @@ export default function Misyon() {
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {value.description}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div}}}}
             className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-6">Hedeflerimiz</h2>
@@ -133,11 +112,10 @@ export default function Misyon() {
                 </span>
               </li>
             </ul>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 

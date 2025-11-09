@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function Pnomatik() {
   const products = [
@@ -49,11 +48,7 @@ export default function Pnomatik() {
               </Link>
             ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div}}}}
             className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-4">
@@ -63,19 +58,18 @@ export default function Pnomatik() {
               Pnömatik ürünlerimiz hakkında detaylı teknik bilgi ve fiyatlandırma
               için lütfen bizimle iletişime geçin.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div}}>
               <Link
                 href="/iletisim"
                 className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"
               >
                 İletişime Geçin
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 

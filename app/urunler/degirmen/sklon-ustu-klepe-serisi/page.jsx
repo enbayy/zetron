@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function SklonUstuKlepeSerisi() {
   const degirmenSeries = [
@@ -38,17 +37,10 @@ export default function SklonUstuKlepeSerisi() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div}}}
           className="max-w-6xl mx-auto"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div}}}}
             className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white mb-12"
           >
             <h2 className="text-3xl font-bold mb-4">
@@ -58,15 +50,15 @@ export default function SklonUstuKlepeSerisi() {
               Sklon Üstü Klepe Serisi hakkında detaylı teknik bilgi ve
               fiyatlandırma için lütfen bizimle iletişime geçin.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div}}>
               <Link
                 href="/iletisim"
                 className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"
               >
                 İletişime Geçin
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Değirmen Series Cards */}
           <div className="mb-12">
@@ -75,21 +67,14 @@ export default function SklonUstuKlepeSerisi() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {degirmenSeries.map((urun, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                <div
+                  key={index}}}}}}
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer group overflow-hidden border border-gray-100"
                 >
                   <Link href={`/urunler/degirmen/${urun.slug}`}>
                     <div className="relative h-48 bg-gradient-to-br from-red-500 to-red-700 overflow-hidden">
-                      <motion.div
-                        className="absolute inset-0 flex items-center justify-center"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
+                      <div
+                        className="absolute inset-0 flex items-center justify-center"}}
                       >
                         <svg
                           className="w-20 h-20 text-white opacity-90"
@@ -104,7 +89,7 @@ export default function SklonUstuKlepeSerisi() {
                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                      </motion.div>
+                      </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
                     <div className="p-6">
@@ -116,7 +101,7 @@ export default function SklonUstuKlepeSerisi() {
                       </p>
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -127,13 +112,8 @@ export default function SklonUstuKlepeSerisi() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {relatedProducts.map((product, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
+                <div
+                  key={index}}}}}}
                 >
                   <Link href={product.href}>
                     <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all border-l-4 border-red-600 h-full">
@@ -145,11 +125,11 @@ export default function SklonUstuKlepeSerisi() {
                       </p>
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

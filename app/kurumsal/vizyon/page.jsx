@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Vizyon() {
   const visionPoints = [
     {
@@ -29,23 +27,17 @@ export default function Vizyon() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="max-w-4xl mx-auto mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-800">
             Vizyonumuz
           </h1>
           <div className="w-24 h-1 bg-red-600 mb-8"></div>
-        </motion.div>
+        </div>
 
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
             className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12"
           >
             <div className="prose prose-lg max-w-none">
@@ -64,17 +56,12 @@ export default function Vizyon() {
                 ve kaliteli hizmet sunan bir marka olmaktır.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {visionPoints.map((point, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
                 className="bg-gradient-to-br from-red-50 to-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all border-l-4 border-red-600"
               >
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
@@ -83,7 +70,7 @@ export default function Vizyon() {
                 <p className="text-gray-600 leading-relaxed">
                   {point.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -91,5 +78,4 @@ export default function Vizyon() {
     </div>
   );
 }
-
 
