@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,6 +9,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isKurumsalOpen, setIsKurumsalOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isKurumsalMobileOpen, setIsKurumsalMobileOpen] = useState(false);
+  const [isProductsMobileOpen, setIsProductsMobileOpen] = useState(false);
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
@@ -129,15 +132,16 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="flex items-center group">
               <div className="relative">
-                <div className="text-2xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent group-hover:from-red-700 group-hover:to-red-800 transition-all duration-300">
-                  ZETRON
-                </div>
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 group-hover:w-full transition-all duration-300"></div>
-              </div>
-              <div className="hidden md:block text-xs text-gray-600 font-medium tracking-wide">
-                Hidrolik Pnömatik Döküm Kalıp
+                <Image
+                  src="/zetronLogo.png"
+                  alt="Zetron Logo"
+                  width={180}
+                  height={60}
+                  className="object-contain group-hover:opacity-90 transition-all duration-300"
+                  priority
+                />
               </div>
             </Link>
           </motion.div>
@@ -380,84 +384,148 @@ export default function Header() {
                   Anasayfa
                 </Link>
                 <div className="px-4 py-2">
-                  <div className="text-gray-900 font-bold text-sm mb-2 px-2">Kurumsal</div>
-                  <div className="space-y-1">
-                    <Link
-                      href="/kurumsal/hakkimizda"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
+                  <button
+                    onClick={() => setIsKurumsalMobileOpen(!isKurumsalMobileOpen)}
+                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-all duration-200"
+                  >
+                    <span>Kurumsal</span>
+                    <motion.svg
+                      className="w-4 h-4 text-gray-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      animate={{ rotate: isKurumsalMobileOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      Hakkımızda
-                    </Link>
-                    <Link
-                      href="/kurumsal/vizyon"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Vizyon
-                    </Link>
-                    <Link
-                      href="/kurumsal/misyon"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Misyon
-                    </Link>
-                    <Link
-                      href="/kurumsal/kalite-politikasi"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Kalite Politikası
-                    </Link>
-                    <Link
-                      href="/kurumsal/belgeler"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Belgeler
-                    </Link>
-                  </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </motion.svg>
+                  </button>
+                  <AnimatePresence>
+                    {isKurumsalMobileOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="space-y-1 pt-2">
+                          <Link
+                            href="/kurumsal/hakkimizda"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Hakkımızda
+                          </Link>
+                          <Link
+                            href="/kurumsal/vizyon"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Vizyon
+                          </Link>
+                          <Link
+                            href="/kurumsal/misyon"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Misyon
+                          </Link>
+                          <Link
+                            href="/kurumsal/kalite-politikasi"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Kalite Politikası
+                          </Link>
+                          <Link
+                            href="/kurumsal/belgeler"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Belgeler
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <div className="px-4 py-2">
-                  <div className="text-gray-900 font-bold text-sm mb-2 px-2">Ürünler</div>
-                  <div className="space-y-1">
-                    <Link
-                      href="/urunler/hidrolik"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
+                  <button
+                    onClick={() => setIsProductsMobileOpen(!isProductsMobileOpen)}
+                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-all duration-200"
+                  >
+                    <span>Ürünler</span>
+                    <motion.svg
+                      className="w-4 h-4 text-gray-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      animate={{ rotate: isProductsMobileOpen ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      Hidrolik
-                    </Link>
-                    <Link
-                      href="/urunler/pnomatik"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Pnömatik
-                    </Link>
-                    <Link
-                      href="/urunler/degirmen"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Değirmen
-                    </Link>
-                    <Link
-                      href="/urunler/metal-kalip"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Metal Kalıp
-                    </Link>
-                    <Link
-                      href="/urunler/enjeksiyon-dokum"
-                      className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Enjeksiyon Döküm
-                    </Link>
-                  </div>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </motion.svg>
+                  </button>
+                  <AnimatePresence>
+                    {isProductsMobileOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="space-y-1 pt-2">
+                          <Link
+                            href="/urunler/hidrolik"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Hidrolik
+                          </Link>
+                          <Link
+                            href="/urunler/pnomatik"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Pnömatik
+                          </Link>
+                          <Link
+                            href="/urunler/degirmen"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Değirmen
+                          </Link>
+                          <Link
+                            href="/urunler/metal-kalip"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Metal Kalıp
+                          </Link>
+                          <Link
+                            href="/urunler/enjeksiyon-dokum"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            Enjeksiyon Döküm
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <Link
                   href="/iletisim"

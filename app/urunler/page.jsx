@@ -108,29 +108,10 @@ export default function Urunler() {
     },
   ];
 
-  ,
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  ,
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <div}}}
+        <div
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-800">
@@ -142,18 +123,16 @@ export default function Urunler() {
           </p>
         </div>
         <div
-          initial="hidden"
-          whileInView="visible"}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {categories.map((category, index) => (
             <div key={index}>
               <Link href={category.href}>
-                <div}
+                <div
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all cursor-pointer group h-full"
                 >
                   <div
-                    className="text-red-600 mb-6 group-hover:text-red-700 transition-colors"}}
+                    className="text-red-600 mb-6 group-hover:text-red-700 transition-colors"
                   >
                     {category.icon}
                   </div>

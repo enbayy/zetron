@@ -48,8 +48,7 @@ export default function Pnomatik() {
               </Link>
             ))}
           </div>
-          <div}}}}
-            className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
+          <div            className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-4">
               Teknik Bilgi ve Fiyatlandırma
@@ -58,7 +57,7 @@ export default function Pnomatik() {
               Pnömatik ürünlerimiz hakkında detaylı teknik bilgi ve fiyatlandırma
               için lütfen bizimle iletişime geçin.
             </p>
-            <div}}>
+            <div>
               <Link
                 href="/iletisim"
                 className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"

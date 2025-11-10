@@ -29,8 +29,7 @@ export default function MetalKalip() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <div}}}
-          className="max-w-6xl mx-auto"
+        <div          className="max-w-6xl mx-auto"
         >
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-800">
             Metal Kalıp
@@ -46,7 +45,7 @@ export default function MetalKalip() {
                 key={index}
                 href={`/urunler/metal-kalip/${product.slug}`}
               >
-                <div}}}}}
+                <div}}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all border-l-4 border-red-600 cursor-pointer"
                 >
                   <h2 className="text-2xl font-semibold mb-4 text-gray-800 hover:text-red-600 transition-colors">
@@ -59,7 +58,7 @@ export default function MetalKalip() {
               </Link>
             ))}
           </div>
-          <div}}}}
+          <div}
             className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-4">
@@ -69,7 +68,7 @@ export default function MetalKalip() {
               Metal kalıp hizmetlerimiz hakkında detaylı bilgi ve fiyatlandırma
               için lütfen bizimle iletişime geçin.
             </p>
-            <div}}>
+            <div>
               <Link
                 href="/iletisim"
                 className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all shadow-lg"

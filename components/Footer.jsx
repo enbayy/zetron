@@ -152,7 +152,7 @@ export default function Footer() {
                   href="tel:+903322513016"
                   className="hover:text-red-400 transition-colors"
                 >
-                  +9 0.332 251 30 16
+                  +90 332 251 30 16
                 </a>
               </li>
               <li className="flex items-center group">
@@ -192,7 +192,7 @@ export default function Footer() {
                     d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                   />
                 </motion.svg>
-                <span>+9 0.505 520 47 42</span>
+                <span>+90 505 520 47 42</span>
               </li>
             </ul>
           </motion.div>
