@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +21,6 @@ export default function Header() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Reduced animation config for mobile
-  const animationConfig = isMobile ? { duration: 0.1 } : { duration: 0.5 };
-  const motionProps = isMobile ? {} : { initial: { opacity: 0, x: -20 }, animate: { opacity: 1, x: 0 }, transition: animationConfig };
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
@@ -141,7 +137,7 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div>
+          <div className="animate-fade-in">
             <Link href="/" className="flex items-center group">
               <div className="relative">
                 <Image
@@ -149,7 +145,7 @@ export default function Header() {
                   alt="Zetron Logo"
                   width={180}
                   height={60}
-                  className="object-contain group-hover:opacity-90 transition-opacity duration-200"
+                  className="object-contain group-hover:opacity-90 transition-opacity duration-300 ease-out"
                   priority
                 />
               </div>
@@ -158,24 +154,25 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            <div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <Link
                 href="/"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-200 group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out group"
               >
                 Anasayfa
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-200 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </Link>
             </div>
             <div
-              className="relative"
+              className="relative animate-fade-in-up"
+              style={{ animationDelay: '0.2s' }}
               onMouseEnter={() => setIsKurumsalOpen(true)}
               onMouseLeave={() => setIsKurumsalOpen(false)}
             >
-              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 flex items-center group">
+              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out flex items-center group">
                 Kurumsal
                 <svg
-                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-200 ${isKurumsalOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-300 ease-out ${isKurumsalOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -187,10 +184,9 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </button>
-              {isKurumsalOpen && (
-                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden transition-all duration-300 ease-out ${isKurumsalOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
                     <Link
                       href="/kurumsal/hakkimizda"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -222,17 +218,17 @@ export default function Header() {
                       Belgeler
                     </Link>
                 </div>
-              )}
             </div>
             <div
-              className="relative"
+              className="relative animate-fade-in-up"
+              style={{ animationDelay: '0.3s' }}
               onMouseEnter={() => setIsProductsOpen(true)}
               onMouseLeave={() => setIsProductsOpen(false)}
             >
-              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 flex items-center group">
+              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out flex items-center group">
                 Ürünler
                 <svg
-                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-200 ${isProductsOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-300 ease-out ${isProductsOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -244,10 +240,9 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </button>
-              {isProductsOpen && (
-                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden transition-all duration-300 ease-out ${isProductsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
                     <Link
                       href="/urunler/hidrolik"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -279,21 +274,20 @@ export default function Header() {
                       Enjeksiyon Döküm
                     </Link>
                 </div>
-              )}
             </div>
-            <div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Link
                 href="/iletisim"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-200 group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out group"
               >
                 İletişim
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-200 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </Link>
             </div>
-            <div className="ml-4">
+            <div className="ml-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <Link
                 href="/iletisim"
-                className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 ease-out shadow-md hover:shadow-lg transform hover:-translate-y-0.5 will-change-transform"
               >
                 Teklif Al
               </Link>
@@ -332,8 +326,7 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white">
+        <div className={`lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white transition-all duration-300 ease-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="space-y-1">
                 <Link
                   href="/"
@@ -484,7 +477,6 @@ export default function Header() {
                 </div>
               </div>
           </div>
-        )}
       </div>
     </header>
   );
