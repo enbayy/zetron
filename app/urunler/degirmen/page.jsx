@@ -24,8 +24,7 @@ export default function Degirmen() {
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
-        <div          className="max-w-6xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-800">
             Değirmen Yedek Parçaları
           </h1>
@@ -39,7 +38,7 @@ export default function Degirmen() {
                 key={index}
                 href={`/urunler/degirmen/${product.slug}`}
               >
-                <div}}
+                <div
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all border-l-4 border-red-600 cursor-pointer"
                 >
                   <h2 className="text-2xl font-semibold mb-4 text-gray-800 hover:text-red-600 transition-colors">
@@ -52,7 +51,7 @@ export default function Degirmen() {
               </Link>
             ))}
           </div>
-          <div}
+          <div
             className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-xl p-8 md:p-12 text-white"
           >
             <h2 className="text-3xl font-bold mb-4">

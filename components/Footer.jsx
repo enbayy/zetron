@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -43,7 +44,15 @@ export default function Footer() {
         >
           {/* Company Info */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-2xl font-bold mb-4 text-red-500">ZETRON</h3>
+            <Link href="/" className="block mb-4">
+              <Image
+                src="/zetronLogo.png"
+                alt="Zetron Logo"
+                width={180}
+                height={60}
+                className="object-contain"
+              />
+            </Link>
             <p className="text-gray-400 mb-4 leading-relaxed">
               Hidrolik-Pnömatik, Değirmen Yedek Parçaları, Alüminyum Döküm ve
               Metal Kalıp sistemlerin proje tasarımlarına uyum, performans ve
