@@ -31,10 +31,10 @@ export default function Header() {
             <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-300">
               <a
                 href="tel:+903322513016"
-                className="flex items-center gap-2 hover:text-white transition-all duration-200 group"
+                className="flex items-center gap-2 hover:text-white group"
               >
                 <svg
-                  className="w-4 h-4 group-hover:scale-110 transition-transform"
+                  className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -52,10 +52,10 @@ export default function Header() {
               <span className="hidden sm:inline text-gray-600">|</span>
               <a
                 href="mailto:info@zetron.com"
-                className="flex items-center gap-2 hover:text-white transition-all duration-200 group"
+                className="flex items-center gap-2 hover:text-white group"
               >
                 <svg
-                  className="w-4 h-4 group-hover:scale-110 transition-transform"
+                  className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -99,7 +99,7 @@ export default function Header() {
                 href="https://www.linkedin.com/company/zetron"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-all duration-200 p-1.5 hover:bg-gray-700 rounded"
+                className="text-gray-400 hover:text-white p-1.5 hover:bg-gray-700 rounded"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -110,7 +110,7 @@ export default function Header() {
                 href="https://www.facebook.com/zetron"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-all duration-200 p-1.5 hover:bg-gray-700 rounded"
+                className="text-gray-400 hover:text-white p-1.5 hover:bg-gray-700 rounded"
                 aria-label="Facebook"
               >
                 <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@ export default function Header() {
                 href="https://www.instagram.com/zetron"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-all duration-200 p-1.5 hover:bg-gray-700 rounded"
+                className="text-gray-400 hover:text-white p-1.5 hover:bg-gray-700 rounded"
                 aria-label="Instagram"
               >
                 <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="animate-fade-in">
+          <div>
             <Link href="/" className="flex items-center group">
               <div className="relative">
                 <Image
@@ -145,7 +145,7 @@ export default function Header() {
                   alt="Zetron Logo"
                   width={180}
                   height={60}
-                  className="object-contain group-hover:opacity-90 transition-opacity duration-300 ease-out"
+                  className="object-contain group-hover:opacity-90"
                   priority
                 />
               </div>
@@ -154,25 +154,24 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div>
               <Link
                 href="/"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm group"
               >
                 Anasayfa
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 group-hover:w-3/4"></span>
               </Link>
             </div>
             <div
-              className="relative animate-fade-in-up"
-              style={{ animationDelay: '0.2s' }}
+              className="relative"
               onMouseEnter={() => setIsKurumsalOpen(true)}
               onMouseLeave={() => setIsKurumsalOpen(false)}
             >
-              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out flex items-center group">
+              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm flex items-center group">
                 Kurumsal
                 <svg
-                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-300 ease-out ${isKurumsalOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 ${isKurumsalOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -184,37 +183,37 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 group-hover:w-3/4"></span>
               </button>
-              <div className={`absolute top-full left-0 pt-2 w-64 transition-all duration-300 ease-out ${isKurumsalOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <div className={`absolute top-full left-0 pt-2 w-64 ${isKurumsalOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
                 <div className="bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/kurumsal/hakkimizda"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Hakkımızda
                     </Link>
                     <Link
                       href="/kurumsal/vizyon"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Vizyon
                     </Link>
                     <Link
                       href="/kurumsal/misyon"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Misyon
                     </Link>
                     <Link
                       href="/kurumsal/kalite-politikasi"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Kalite Politikası
                     </Link>
                     <Link
                       href="/kurumsal/belgeler"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Belgeler
                     </Link>
@@ -222,15 +221,14 @@ export default function Header() {
               </div>
             </div>
             <div
-              className="relative animate-fade-in-up"
-              style={{ animationDelay: '0.3s' }}
+              className="relative"
               onMouseEnter={() => setIsProductsOpen(true)}
               onMouseLeave={() => setIsProductsOpen(false)}
             >
-              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out flex items-center group">
+              <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm flex items-center group">
                 Ürünler
                 <svg
-                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-300 ease-out ${isProductsOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 ${isProductsOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -242,56 +240,56 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 group-hover:w-3/4"></span>
               </button>
-              <div className={`absolute top-full left-0 pt-2 w-64 transition-all duration-300 ease-out ${isProductsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <div className={`absolute top-full left-0 pt-2 w-64 ${isProductsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
                 <div className="bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/urunler/hidrolik"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Hidrolik
                     </Link>
                     <Link
                       href="/urunler/pnomatik"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Pnömatik
                     </Link>
                     <Link
                       href="/urunler/degirmen"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Değirmen
                     </Link>
                     <Link
                       href="/urunler/metal-kalip"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Metal Kalıp
                     </Link>
                     <Link
                       href="/urunler/enjeksiyon-dokum"
-                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
+                      className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
                     >
                       Enjeksiyon Döküm
                     </Link>
                 </div>
               </div>
             </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div>
               <Link
                 href="/iletisim"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-300 ease-out group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm group"
               >
                 İletişim
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 group-hover:w-3/4"></span>
               </Link>
             </div>
-            <div className="ml-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <div className="ml-4">
               <Link
                 href="/iletisim"
-                className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 ease-out shadow-md hover:shadow-lg transform hover:-translate-y-0.5 will-change-transform"
+                className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 shadow-md hover:shadow-lg"
               >
                 Teklif Al
               </Link>
@@ -300,12 +298,12 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-gray-700 hover:text-red-600 transition-colors p-2 rounded-lg hover:bg-gray-100"
+            className="lg:hidden text-gray-700 hover:text-red-600 p-2 rounded-lg hover:bg-gray-100"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menu"
           >
             <svg
-              className={`w-6 h-6 transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
+              className={`w-6 h-6 ${isMenuOpen ? 'rotate-90' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -330,11 +328,11 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white transition-all duration-300 ease-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className={`lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="space-y-1">
                 <Link
                   href="/"
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-semibold rounded-lg mx-2"
+                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 font-semibold rounded-lg mx-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Anasayfa
@@ -342,11 +340,11 @@ export default function Header() {
                 <div className="px-4 py-2">
                   <button
                     onClick={() => setIsKurumsalMobileOpen(!isKurumsalMobileOpen)}
-                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-all duration-200"
+                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600"
                   >
                     <span>Kurumsal</span>
                     <svg
-                      className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isKurumsalMobileOpen ? 'rotate-180' : ''}`}
+                      className={`w-4 h-4 text-gray-500 ${isKurumsalMobileOpen ? 'rotate-180' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -364,35 +362,35 @@ export default function Header() {
                         <div className="space-y-1 pt-2">
                           <Link
                             href="/kurumsal/hakkimizda"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Hakkımızda
                           </Link>
                           <Link
                             href="/kurumsal/vizyon"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Vizyon
                           </Link>
                           <Link
                             href="/kurumsal/misyon"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Misyon
                           </Link>
                           <Link
                             href="/kurumsal/kalite-politikasi"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Kalite Politikası
                           </Link>
                           <Link
                             href="/kurumsal/belgeler"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Belgeler
@@ -404,11 +402,11 @@ export default function Header() {
                 <div className="px-4 py-2">
                   <button
                     onClick={() => setIsProductsMobileOpen(!isProductsMobileOpen)}
-                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-colors duration-200"
+                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600"
                   >
                     <span>Ürünler</span>
                     <svg
-                      className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isProductsMobileOpen ? 'rotate-180' : ''}`}
+                      className={`w-4 h-4 text-gray-500 ${isProductsMobileOpen ? 'rotate-180' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -426,35 +424,35 @@ export default function Header() {
                         <div className="space-y-1 pt-2">
                           <Link
                             href="/urunler/hidrolik"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Hidrolik
                           </Link>
                           <Link
                             href="/urunler/pnomatik"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Pnömatik
                           </Link>
                           <Link
                             href="/urunler/degirmen"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Değirmen
                           </Link>
                           <Link
                             href="/urunler/metal-kalip"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Metal Kalıp
                           </Link>
                           <Link
                             href="/urunler/enjeksiyon-dokum"
-                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm rounded-lg"
+                            className="block px-4 py-2.5 text-gray-600 hover:bg-red-50 hover:text-red-600 font-medium text-sm rounded-lg"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             Enjeksiyon Döküm
@@ -465,7 +463,7 @@ export default function Header() {
                 </div>
                 <Link
                   href="/iletisim"
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200 font-semibold rounded-lg mx-2"
+                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 font-semibold rounded-lg mx-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   İletişim
@@ -473,7 +471,7 @@ export default function Header() {
                 <div className="px-4 pt-2">
                   <Link
                     href="/iletisim"
-                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-colors duration-200 shadow-md"
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 shadow-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Teklif Al

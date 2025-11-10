@@ -243,7 +243,7 @@ export default function Home() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 ${slide.fallbackGradient} text-white transition-opacity duration-700 ease-in-out will-change-opacity`}
+              className={`absolute inset-0 ${slide.fallbackGradient} text-white`}
             >
                 {/* Background Image or Gradient */}
                 <div className="absolute inset-0 overflow-hidden">
@@ -270,7 +270,7 @@ export default function Home() {
 
                 {/* Content */}
                 <div className="container mx-auto px-4 h-full flex items-center relative z-10">
-                  <div className="max-w-3xl animate-fade-in-up">
+                  <div className="max-w-3xl">
                     <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                       {slide.title}
                     </h2>
@@ -280,7 +280,7 @@ export default function Home() {
                     <div>
                       <Link
                         href={slide.link}
-                        className="inline-block bg-white text-red-700 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-105 transform will-change-transform"
+                        className="inline-block bg-white text-red-700 px-8 py-4 rounded-lg font-semibold hover:bg-red-50 shadow-lg hover:shadow-xl"
                       >
                         Detaylı Bilgi
                       </Link>
@@ -294,7 +294,7 @@ export default function Home() {
         {/* Navigation Arrows */}
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 ease-out hover:scale-110 will-change-transform"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm"
           aria-label="Önceki slide"
         >
           <svg
@@ -313,7 +313,7 @@ export default function Home() {
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300 ease-out hover:scale-110 will-change-transform"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm"
           aria-label="Sonraki slide"
         >
           <svg
@@ -337,12 +337,11 @@ export default function Home() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-3 rounded-full transition-all duration-300 ease-out animate-fade-in-up ${
+              className={`h-3 rounded-full ${
                 index === currentSlide
                   ? "w-8 bg-white"
                   : "w-3 bg-white/50 hover:bg-white/75"
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
               aria-label={`Slide ${index + 1}`}
             />
           ))}
@@ -360,7 +359,7 @@ export default function Home() {
         )}
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-16">
             <span className="inline-block text-red-600 font-semibold text-sm uppercase tracking-wider mb-4">
               Ürün Kategorilerimiz
             </span>
@@ -385,12 +384,11 @@ export default function Home() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`relative px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 ease-out overflow-hidden group animate-fade-in-up will-change-transform ${
+                className={`relative px-8 py-4 rounded-xl font-semibold text-base overflow-hidden group ${
                   activeCategory === category.id
                     ? `bg-gradient-to-r ${category.color} text-white shadow-xl shadow-red-500/30`
                     : "bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-lg border-2 border-gray-200 hover:border-red-300"
                 }`}
-                style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
                 <span className="relative z-10">{category.name}</span>
               </button>
@@ -403,10 +401,9 @@ export default function Home() {
               <Link
                 key={index}
                 href={`/urunler/${activeCategory}/${product.slug}`}
-                className="block h-full animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="block h-full"
               >
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out cursor-pointer group overflow-hidden border border-gray-100 h-full flex flex-col relative will-change-transform">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer group overflow-hidden border border-gray-100 h-full flex flex-col relative">
                     {/* Card Header with Gradient */}
                     <div
                       className={`relative h-56 bg-gradient-to-br ${categories.find((c) => c.id === activeCategory)?.color} overflow-hidden flex-shrink-0`}
@@ -451,9 +448,9 @@ export default function Home() {
                     {/* Card Content */}
                     <div className="p-6 flex-1 flex flex-col relative">
                       {/* Hover effect indicator */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600 transform scale-x-0 group-hover:scale-x-100"></div>
                       
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600 transition-colors duration-300 mb-3 leading-tight">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600 mb-3 leading-tight">
                         {product.name}
                       </h3>
                       <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">
@@ -461,10 +458,10 @@ export default function Home() {
                       </p>
                       
                       {/* Read More Link */}
-                      <div className="flex items-center text-red-600 font-semibold text-sm mt-auto pt-4 border-t border-gray-100 group-hover:border-red-200 transition-colors duration-300 ease-out">
+                      <div className="flex items-center text-red-600 font-semibold text-sm mt-auto pt-4 border-t border-gray-100 group-hover:border-red-200">
                         <span>Detaylı İncele</span>
                         <svg
-                          className="w-5 h-5 ml-2 transition-transform duration-300 ease-out group-hover:translate-x-1 will-change-transform"
+                          className="w-5 h-5 ml-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -484,14 +481,14 @@ export default function Home() {
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <div className="text-center mt-16">
             <Link
               href={`/urunler/${activeCategory}`}
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 ease-out shadow-xl hover:shadow-2xl hover:scale-105 transform will-change-transform"
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 shadow-xl hover:shadow-2xl"
             >
               <span>Tüm Ürünleri Görüntüle</span>
               <svg
-                className="w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-1 will-change-transform"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -519,7 +516,7 @@ export default function Home() {
           )}
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20 animate-fade-in-up">
+          <div className="text-center mb-20">
             <span className="inline-block text-red-600 font-semibold text-sm uppercase tracking-wider mb-4">
               Hizmet Alanlarımız
             </span>
@@ -542,35 +539,34 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="relative group h-full animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="relative group h-full"
               >
                 <Link href={service.href} className="block h-full">
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out cursor-pointer h-full flex flex-col relative overflow-hidden border border-gray-100 will-change-transform">
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl cursor-pointer h-full flex flex-col relative overflow-hidden border border-gray-100">
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-50/0 to-red-50/0 group-hover:from-red-50/50 group-hover:to-transparent transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-50/0 to-red-50/0 group-hover:from-red-50/50 group-hover:to-transparent"></div>
                     
                     {/* Top accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-500 transform scale-x-0 group-hover:scale-x-100"></div>
                     
                     {/* Content */}
                     <div className="p-8 flex-1 flex flex-col relative z-10">
                     {/* Icon Container - Enhanced */}
                     <div className="relative w-20 h-20 mb-6 flex-shrink-0">
                         {/* Icon background with gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl group-hover:from-red-600 group-hover:to-red-700 transition-all duration-300 shadow-lg group-hover:shadow-xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl group-hover:from-red-600 group-hover:to-red-700 shadow-lg group-hover:shadow-xl"></div>
                         
                         {/* Icon glow effect */}
-                        <div className="absolute inset-0 bg-red-500/20 rounded-2xl blur-xl group-hover:bg-red-600/30 transition-all duration-300"></div>
+                        <div className="absolute inset-0 bg-red-500/20 rounded-2xl blur-xl group-hover:bg-red-600/30"></div>
                         
                         {/* Icon */}
-                        <div className="relative w-full h-full flex items-center justify-center text-red-600 group-hover:text-white transition-colors duration-300">
+                        <div className="relative w-full h-full flex items-center justify-center text-red-600 group-hover:text-white">
                         {service.icon}
                       </div>
                     </div>
                     
                     {/* Title */}
-                      <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-red-600 transition-colors duration-300 leading-tight">
+                      <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-red-600 leading-tight">
                         {service.title}
                       </h3>
                       
@@ -580,10 +576,10 @@ export default function Home() {
                       </p>
                       
                       {/* Learn More Link */}
-                      <div className="flex items-center text-red-600 font-semibold text-sm mt-auto pt-4 border-t border-gray-100 group-hover:border-red-200 transition-colors duration-300 ease-out">
+                      <div className="flex items-center text-red-600 font-semibold text-sm mt-auto pt-4 border-t border-gray-100 group-hover:border-red-200">
                         <span>Daha Fazla Bilgi</span>
                         <svg
-                          className="w-5 h-5 ml-2 transition-transform duration-300 ease-out group-hover:translate-x-1 will-change-transform"
+                          className="w-5 h-5 ml-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -599,7 +595,7 @@ export default function Home() {
                     </div>
                     
                     {/* Decorative corner element */}
-                    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-tl-full"></div>
+                    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-red-50 to-transparent opacity-0 group-hover:opacity-100 rounded-tl-full"></div>
                   </div>
                 </Link>
               </div>
@@ -607,14 +603,14 @@ export default function Home() {
           </div>
 
           {/* Additional CTA */}
-          <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <div className="text-center mt-16">
             <Link
               href="/urunler"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-300 ease-out shadow-xl hover:shadow-2xl hover:scale-105 transform will-change-transform"
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-10 py-4 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 shadow-xl hover:shadow-2xl"
             >
               <span>Tüm Hizmetlerimizi Keşfedin</span>
               <svg
-                className="w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-1 will-change-transform"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -644,7 +640,7 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Header Section */}
-          <div className="text-center mb-16 animate-fade-in-up">
+          <div className="text-center mb-16">
             <span className="inline-block text-red-600 font-semibold text-sm uppercase tracking-wider mb-4">
               Şirketimiz Hakkında
             </span>
@@ -662,7 +658,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               {/* Left Column - Text Content */}
-              <div className="space-y-6 animate-fade-in-up">
+              <div className="space-y-6">
                 <div className="space-y-4">
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                     Endüstriyel Çözümlerde
@@ -683,7 +679,7 @@ export default function Home() {
               </div>
 
               {/* Right Column - Features Grid */}
-              <div className="grid grid-cols-2 gap-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <div className="grid grid-cols-2 gap-6">
                 {[
                   {
                     icon: (
@@ -724,13 +720,12 @@ export default function Home() {
                 ].map((feature, index) => (
                   <div
                     key={index}
-                    className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out border border-gray-100 group animate-fade-in-up will-change-transform"
-                    style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+                    className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 group"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center mb-4 text-red-600 group-hover:from-red-600 group-hover:to-red-700 group-hover:text-white transition-all duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-xl flex items-center justify-center mb-4 text-red-600 group-hover:from-red-600 group-hover:to-red-700 group-hover:text-white">
                       {feature.icon}
                     </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors">
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600">
                       {feature.title}
                     </h4>
                     <p className="text-sm text-gray-600">
@@ -742,7 +737,7 @@ export default function Home() {
             </div>
 
             {/* Values Section */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
               {/* Background Pattern - Reduced on mobile */}
               {!isMobile && (
                 <div className="absolute inset-0 opacity-10">
@@ -772,10 +767,9 @@ export default function Home() {
                   ].map((value, index) => (
                     <div
                       key={index}
-                      className="text-center animate-fade-in-up will-change-transform"
-                      style={{ animationDelay: `${0.5 + index * 0.15}s` }}
+                      className="text-center"
                     >
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out hover:scale-110">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
                         <div className="w-3 h-3 bg-white rounded-full"></div>
                       </div>
                       <h4 className="text-xl font-bold text-white mb-3">
@@ -791,14 +785,14 @@ export default function Home() {
             </div>
 
             {/* CTA Button */}
-            <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            <div className="text-center mt-12">
               <Link
                 href="/kurumsal/hakkimizda"
-                className="group inline-flex items-center gap-3 bg-white text-red-600 px-10 py-4 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 ease-out shadow-xl hover:shadow-2xl hover:scale-105 transform will-change-transform border-2 border-red-600"
+                className="group inline-flex items-center gap-3 bg-white text-red-600 px-10 py-4 rounded-xl font-semibold hover:bg-gray-50 shadow-xl hover:shadow-2xl border-2 border-red-600"
               >
                 <span>Daha Fazla Bilgi</span>
                 <svg
-                  className="w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-1 will-change-transform"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -828,10 +822,9 @@ export default function Home() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="p-6 animate-fade-in-up will-change-transform"
-                  style={{ animationDelay: `${index * 0.15}s` }}
+                  className="p-6"
                 >
-                  <div className="text-5xl font-bold mb-2 transition-transform duration-300 ease-out hover:scale-110">
+                  <div className="text-5xl font-bold mb-2">
                     {stat.number}
                   </div>
                   <div className="text-red-100 text-lg">{stat.label}</div>
@@ -850,19 +843,19 @@ export default function Home() {
             </div>
           )}
           <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="animate-fade-in-up">
+            <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Projeleriniz İçin Bizimle İletişime Geçin
               </h2>
-              <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto">
                 Kaliteli hizmet ve ürünlerimiz hakkında daha fazla bilgi almak için
                 bize ulaşın. Uzman ekibimiz size yardımcı olmaktan mutluluk
                 duyar.
               </p>
-              <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div>
                 <Link
                   href="/iletisim"
-                  className="inline-block bg-red-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-105 transform will-change-transform"
+                  className="inline-block bg-red-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-red-700 shadow-lg hover:shadow-xl"
                 >
                   İletişime Geçin
                 </Link>
