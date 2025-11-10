@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
@@ -11,6 +11,20 @@ export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isKurumsalMobileOpen, setIsKurumsalMobileOpen] = useState(false);
   const [isProductsMobileOpen, setIsProductsMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Reduced animation config for mobile
+  const animationConfig = isMobile ? { duration: 0.1 } : { duration: 0.5 };
+  const motionProps = isMobile ? {} : { initial: { opacity: 0, x: -20 }, animate: { opacity: 1, x: 0 }, transition: animationConfig };
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
@@ -127,11 +141,7 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <Link href="/" className="flex items-center group">
               <div className="relative">
                 <Image
@@ -139,45 +149,36 @@ export default function Header() {
                   alt="Zetron Logo"
                   width={180}
                   height={60}
-                  className="object-contain group-hover:opacity-90 transition-all duration-300"
+                  className="object-contain group-hover:opacity-90 transition-opacity duration-200"
                   priority
                 />
               </div>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            <div>
               <Link
                 href="/"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-200 group"
               >
                 Anasayfa
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-200 group-hover:w-3/4"></span>
               </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+            </div>
+            <div
               className="relative"
               onMouseEnter={() => setIsKurumsalOpen(true)}
               onMouseLeave={() => setIsKurumsalOpen(false)}
             >
               <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 flex items-center group">
                 Kurumsal
-                <motion.svg
-                  className="w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600"
+                <svg
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-200 ${isKurumsalOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  animate={{ rotate: isKurumsalOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
                 >
                   <path
                     strokeLinecap="round"
@@ -185,18 +186,11 @@ export default function Header() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </motion.svg>
+                </svg>
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
               </button>
-              <AnimatePresence>
-                {isKurumsalOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden"
-                  >
+              {isKurumsalOpen && (
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/kurumsal/hakkimizda"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -227,27 +221,21 @@ export default function Header() {
                     >
                       Belgeler
                     </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+                </div>
+              )}
+            </div>
+            <div
               className="relative"
               onMouseEnter={() => setIsProductsOpen(true)}
               onMouseLeave={() => setIsProductsOpen(false)}
             >
               <button className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 flex items-center group">
                 Ürünler
-                <motion.svg
-                  className="w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600"
+                <svg
+                  className={`w-4 h-4 ml-1.5 text-gray-500 group-hover:text-red-600 transition-transform duration-200 ${isProductsOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  animate={{ rotate: isProductsOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
                 >
                   <path
                     strokeLinecap="round"
@@ -255,18 +243,11 @@ export default function Header() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </motion.svg>
+                </svg>
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
               </button>
-              <AnimatePresence>
-                {isProductsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden"
-                  >
+              {isProductsOpen && (
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/urunler/hidrolik"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -297,54 +278,39 @@ export default function Header() {
                     >
                       Enjeksiyon Döküm
                     </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
+                </div>
+              )}
+            </div>
+            <div>
               <Link
                 href="/iletisim"
-                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-all duration-200 group"
+                className="relative px-4 py-2 text-gray-700 hover:text-red-600 font-semibold text-sm transition-colors duration-200 group"
               >
                 İletişim
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 group-hover:w-3/4"></span>
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-200 group-hover:w-3/4"></span>
               </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="ml-4"
-            >
+            </div>
+            <div className="ml-4">
               <Link
                 href="/iletisim"
                 className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Teklif Al
               </Link>
-            </motion.div>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+          <button
             className="lg:hidden text-gray-700 hover:text-red-600 transition-colors p-2 rounded-lg hover:bg-gray-100"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Menu"
           >
-            <motion.svg
-              className="w-6 h-6"
+            <svg
+              className={`w-6 h-6 transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              animate={{ rotate: isMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.3 }}
             >
               {isMenuOpen ? (
                 <path
@@ -361,20 +327,13 @@ export default function Header() {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               )}
-            </motion.svg>
-          </motion.button>
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white"
-            >
+        {isMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-gray-200 overflow-hidden bg-white">
               <div className="space-y-1">
                 <Link
                   href="/"
@@ -389,13 +348,11 @@ export default function Header() {
                     className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-all duration-200"
                   >
                     <span>Kurumsal</span>
-                    <motion.svg
-                      className="w-4 h-4 text-gray-500"
+                    <svg
+                      className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isKurumsalMobileOpen ? 'rotate-180' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      animate={{ rotate: isKurumsalMobileOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
                     >
                       <path
                         strokeLinecap="round"
@@ -403,17 +360,10 @@ export default function Header() {
                         strokeWidth={2}
                         d="M19 9l-7 7-7-7"
                       />
-                    </motion.svg>
+                    </svg>
                   </button>
-                  <AnimatePresence>
-                    {isKurumsalMobileOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
+                  {isKurumsalMobileOpen && (
+                    <div className="overflow-hidden">
                         <div className="space-y-1 pt-2">
                           <Link
                             href="/kurumsal/hakkimizda"
@@ -451,23 +401,20 @@ export default function Header() {
                             Belgeler
                           </Link>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    </div>
+                  )}
                 </div>
                 <div className="px-4 py-2">
                   <button
                     onClick={() => setIsProductsMobileOpen(!isProductsMobileOpen)}
-                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-all duration-200"
+                    className="w-full flex items-center justify-between px-2 py-2 text-gray-900 font-bold text-sm hover:text-red-600 transition-colors duration-200"
                   >
                     <span>Ürünler</span>
-                    <motion.svg
-                      className="w-4 h-4 text-gray-500"
+                    <svg
+                      className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${isProductsMobileOpen ? 'rotate-180' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      animate={{ rotate: isProductsMobileOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
                     >
                       <path
                         strokeLinecap="round"
@@ -475,17 +422,10 @@ export default function Header() {
                         strokeWidth={2}
                         d="M19 9l-7 7-7-7"
                       />
-                    </motion.svg>
+                    </svg>
                   </button>
-                  <AnimatePresence>
-                    {isProductsMobileOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
+                  {isProductsMobileOpen && (
+                    <div className="overflow-hidden">
                         <div className="space-y-1 pt-2">
                           <Link
                             href="/urunler/hidrolik"
@@ -523,13 +463,12 @@ export default function Header() {
                             Enjeksiyon Döküm
                           </Link>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    </div>
+                  )}
                 </div>
                 <Link
                   href="/iletisim"
-                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-semibold rounded-lg mx-2"
+                  className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200 font-semibold rounded-lg mx-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   İletişim
@@ -537,16 +476,15 @@ export default function Header() {
                 <div className="px-4 pt-2">
                   <Link
                     href="/iletisim"
-                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md"
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-semibold text-sm rounded-lg hover:from-red-700 hover:to-red-800 transition-colors duration-200 shadow-md"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Teklif Al
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </div>
     </header>
   );
