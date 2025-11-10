@@ -186,7 +186,8 @@ export default function Header() {
                 </svg>
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden transition-all duration-300 ease-out ${isKurumsalOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <div className={`absolute top-full left-0 pt-2 w-64 transition-all duration-300 ease-out ${isKurumsalOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+                <div className="bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/kurumsal/hakkimizda"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -218,6 +219,7 @@ export default function Header() {
                       Belgeler
                     </Link>
                 </div>
+              </div>
             </div>
             <div
               className="relative animate-fade-in-up"
@@ -242,7 +244,8 @@ export default function Header() {
                 </svg>
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-700 transition-all duration-300 ease-out group-hover:w-3/4"></span>
               </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden transition-all duration-300 ease-out ${isProductsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <div className={`absolute top-full left-0 pt-2 w-64 transition-all duration-300 ease-out ${isProductsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+                <div className="bg-white rounded-lg shadow-2xl py-2 border border-gray-100 overflow-hidden">
                     <Link
                       href="/urunler/hidrolik"
                       className="block px-5 py-2.5 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 font-medium text-sm border-l-2 border-transparent hover:border-red-600"
@@ -274,6 +277,7 @@ export default function Header() {
                       Enjeksiyon Döküm
                     </Link>
                 </div>
+              </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Link
