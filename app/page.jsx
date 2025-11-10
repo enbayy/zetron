@@ -337,11 +337,12 @@ export default function Home() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-3 rounded-full transition-all ${
+              className={`h-3 rounded-full transition-all duration-300 ease-out animate-fade-in-up ${
                 index === currentSlide
                   ? "w-8 bg-white"
                   : "w-3 bg-white/50 hover:bg-white/75"
               }`}
+              style={{ animationDelay: `${index * 0.1}s` }}
               aria-label={`Slide ${index + 1}`}
             />
           ))}
@@ -380,15 +381,16 @@ export default function Home() {
 
           {/* Category Buttons - Enhanced Design */}
           <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`relative px-8 py-4 rounded-xl font-semibold text-base transition-all duration-200 overflow-hidden group ${
+                className={`relative px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 ease-out overflow-hidden group animate-fade-in-up will-change-transform ${
                   activeCategory === category.id
                     ? `bg-gradient-to-r ${category.color} text-white shadow-xl shadow-red-500/30`
                     : "bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-lg border-2 border-gray-200 hover:border-red-300"
                 }`}
+                style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
                 <span className="relative z-10">{category.name}</span>
               </button>
@@ -660,7 +662,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               {/* Left Column - Text Content */}
-              <div className="space-y-6">
+              <div className="space-y-6 animate-fade-in-up">
                 <div className="space-y-4">
                   <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                     Endüstriyel Çözümlerde
@@ -681,7 +683,7 @@ export default function Home() {
               </div>
 
               {/* Right Column - Features Grid */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 {[
                   {
                     icon: (
@@ -740,7 +742,7 @@ export default function Home() {
             </div>
 
             {/* Values Section */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               {/* Background Pattern - Reduced on mobile */}
               {!isMobile && (
                 <div className="absolute inset-0 opacity-10">
@@ -770,9 +772,10 @@ export default function Home() {
                   ].map((value, index) => (
                     <div
                       key={index}
-                      className="text-center"
+                      className="text-center animate-fade-in-up will-change-transform"
+                      style={{ animationDelay: `${0.5 + index * 0.15}s` }}
                     >
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ease-out hover:scale-110">
                         <div className="w-3 h-3 bg-white rounded-full"></div>
                       </div>
                       <h4 className="text-xl font-bold text-white mb-3">
@@ -825,9 +828,10 @@ export default function Home() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="p-6"
+                  className="p-6 animate-fade-in-up will-change-transform"
+                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                  <div className="text-5xl font-bold mb-2">
+                  <div className="text-5xl font-bold mb-2 transition-transform duration-300 ease-out hover:scale-110">
                     {stat.number}
                   </div>
                   <div className="text-red-100 text-lg">{stat.label}</div>
@@ -846,19 +850,19 @@ export default function Home() {
             </div>
           )}
           <div className="container mx-auto px-4 text-center relative z-10">
-            <div>
+            <div className="animate-fade-in-up">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Projeleriniz İçin Bizimle İletişime Geçin
               </h2>
-              <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto">
+              <p className="text-xl mb-10 text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 Kaliteli hizmet ve ürünlerimiz hakkında daha fazla bilgi almak için
                 bize ulaşın. Uzman ekibimiz size yardımcı olmaktan mutluluk
                 duyar.
               </p>
-              <div>
+              <div className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                 <Link
                   href="/iletisim"
-                  className="inline-block bg-red-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                  className="inline-block bg-red-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-105 transform will-change-transform"
                 >
                   İletişime Geçin
                 </Link>
